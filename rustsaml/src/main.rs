@@ -1,9 +1,10 @@
 use std::io;
 
 mod shared;
+mod parser;
 
 fn main() {
-    let mut inputs: Vec<String> = Vec::new();
+    let mut inputs: Vec<shared::KeyValuePair> = Vec::new();
 
     let mut input = String::new();
 
@@ -17,7 +18,10 @@ fn main() {
                     if temp.is_empty() {
                         break;
                     }
-                    inputs.push(String::from(temp));
+                    let result = parser::awsaml::parse_key_value(temp);
+                    if result.is_ok() {
+                        inputs.push(result.unwrap())
+                    }
                     input = String::new();
                 }
             }
@@ -25,9 +29,5 @@ fn main() {
                 break;
             }
         }
-    }
-
-    for input in inputs {
-        println!("{}", input);
     }
 }
