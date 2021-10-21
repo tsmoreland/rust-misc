@@ -1,7 +1,9 @@
 use std::io;
 
+mod shared;
+
 fn main() {
-    let mut inputs: Vec<String>  = Vec::new();
+    let mut inputs: Vec<String> = Vec::new();
 
     let mut input = String::new();
 
@@ -13,15 +15,14 @@ fn main() {
                 } else {
                     let temp = input.trim();
                     if temp.is_empty() {
-                       break;
+                        break;
                     }
                     inputs.push(String::from(temp));
                     input = String::new();
-                    
                 }
-            },
-            Err(_) => { 
-                break; 
+            }
+            Err(_) => {
+                break;
             }
         }
     }
@@ -29,6 +30,4 @@ fn main() {
     for input in inputs {
         println!("{}", input);
     }
-
-
 }
