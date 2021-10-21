@@ -17,6 +17,7 @@ fn main() {
                     }
                     inputs.push(String::from(temp));
                     input = String::new();
+                    
                 }
             },
             Err(_) => { 
