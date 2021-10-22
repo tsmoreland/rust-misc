@@ -1,13 +1,19 @@
 
 #[derive(Debug)]
-pub struct KeyValuePair<'a> {
-    key: &'a str,
-    value: &'a str,
+pub struct KeyValuePair {
+    key: String,
+    value: String,
 }
 
-impl KeyValuePair<'_> {
+impl KeyValuePair {
     #[warn(dead_code)]
-    pub fn new<'a>(key: &'a str, value: &'a str) -> KeyValuePair<'a> {
-        return KeyValuePair { key, value }
+    pub fn new(key: &str, value: &str) -> KeyValuePair {
+        return KeyValuePair { key: String::from(key), value: String::from(value) }
+    }
+
+    #[warn(dead_code)]
+    pub fn deconstruct(&self) -> (&str, &str) {
+        return (&self.key, &self.value);
+
     }
 }

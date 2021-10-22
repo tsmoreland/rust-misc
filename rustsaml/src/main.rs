@@ -7,8 +7,9 @@ fn main() {
     let mut inputs: Vec<shared::KeyValuePair> = Vec::new();
 
     let mut input = String::new();
+    let mut done = false;
 
-    loop {
+    while !done {
         match io::stdin().read_line(&mut input) {
             Ok(n) => {
                 if n == 0 {
@@ -16,9 +17,10 @@ fn main() {
                 } else {
                     let temp = input.trim();
                     if temp.is_empty() {
-                        break;
+                        done = true;
+                        continue;
                     }
-                    let result = parser::awsaml::parse_key_value(temp);
+                    let result = parser::awsaml::parse_key_value(temp.to_string());
                     if result.is_ok() {
                         inputs.push(result.unwrap())
                     }
@@ -26,8 +28,13 @@ fn main() {
                 }
             }
             Err(_) => {
-                break;
+                done = true;
             }
         }
+    }
+
+    for input in inputs.iter() {
+        let (key, value) = input.deconstruct();
+        println!("{}: {}", key, value);
     }
 }
