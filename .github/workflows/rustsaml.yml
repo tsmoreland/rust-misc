@@ -5,7 +5,7 @@ on:
     branches: [ main ]
     paths:
     - rustsaml/**
-    - .github/workflows/restsaml.yml    
+    - .github/workflows/rustsaml.yml    
   pull_request:
     branches: [ main ]
     paths:
