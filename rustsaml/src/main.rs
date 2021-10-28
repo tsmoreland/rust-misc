@@ -2,6 +2,7 @@ use std::io;
 
 mod shared;
 mod parser;
+mod shell_exporter;
 
 fn main() {
     let mut inputs: Vec<shared::KeyValuePair> = Vec::new();
@@ -33,8 +34,15 @@ fn main() {
         }
     }
 
-    for input in inputs.iter() {
-        let (key, value) = input.deconstruct();
-        println!("{}: {}", key, value);
+    match shell_exporter::exporter::get_exporter("powershell") {
+        Ok(export_fn) => {
+            for pair in inputs {
+                match export_fn(pair) {
+                    Ok(output) => println!("{}", output),
+                    Err(_) => {}
+                };
+            }
+        },
+        Err(_) => { }
     }
 }
