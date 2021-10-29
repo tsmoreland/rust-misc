@@ -1,7 +1,7 @@
 use std::io;
 
-mod shared;
 mod parser;
+mod shared;
 mod shell_exporter;
 
 fn main() {
@@ -42,7 +42,7 @@ fn main() {
                     Err(_) => {}
                 };
             }
-        },
-        Err(_) => { }
+        }
+        Err(_) => {}
     }
 }
