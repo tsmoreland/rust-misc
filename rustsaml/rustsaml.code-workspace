@@ -1,0 +1,42 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.dccache": true,
+      ".gitignore": true,
+      ".idea": true,
+      "target": true,
+    },
+    "[rust]": {
+      "editor.tabSize": 4,
+      "editor.insertSpaces": true
+    },
+    "[yaml]": {
+      "editor.tabSize": 2,
+      "editor.insertSpaces": true
+    },
+    "[json]":{
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "[xml]": {
+      "editor.tabSize": 2,
+      "editor.insertSpaces": true
+    },
+    "yaml.trace.server": "verbose"
+  },
+  "extensions": {
+    "recommendations": [
+      "rust-lang.rust",
+      "matklad.rust-analyzer"
+    ]
+  }
+}
