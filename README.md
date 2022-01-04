@@ -1,6 +1,6 @@
 # rust-sample(s)
 
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/organization/repository)
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/tsmoreland/rust-misc)
 
 miscellaneous toy projects in rust
 
