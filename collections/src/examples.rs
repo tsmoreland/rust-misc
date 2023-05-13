@@ -37,7 +37,7 @@ pub fn string_example() {
     println!("updated pre_allocated_string capacity: {:?}", pre_allocated_string.capacity());
 }
 
-pub fn hashmap_example() {
+pub fn hashmap_simple_example() {
     let mut map = HashMap::new();
     map.insert("key", 10);
 
