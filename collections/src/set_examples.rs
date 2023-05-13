@@ -8,7 +8,7 @@ pub fn set_example() {
     new_set.insert(3);
     new_set.retain(|n| *n < 2);
 
-    let mut from_set = HashSet::from([0, 1, 2]);
+    let from_set = HashSet::from([0, 1, 2]);
     if new_set.is_subset(&from_set) {
         println!("new set {:?} is subset of from set {:?}", new_set, from_set)
     }
