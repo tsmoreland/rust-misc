@@ -40,7 +40,8 @@ pub fn hashmap_example() {
         },
     );
 
-    users_by_id.remove(3);
+    let three = 3;
+    users_by_id.remove(&three);
     users_by_id.entry(3).or_insert(User {
         id: 3,
         username: String::from("superman"),
@@ -55,15 +56,18 @@ pub fn hashmap_example() {
         last_name: String::from("Jordan"),
     });
 
-    let batman = users_by_id.get(1);
+    let one = 1;
+    let batman = users_by_id.get(&one);
     match batman {
-        Some(user) => println!("{user}"),
+        Some(user) => println!("{:?}", user),
         None => println!("Not found"),
     }
 
     for (id, user) in users_by_id {
         println!("{} = {:?}", id, user)
     }
-    
-    users_by_id.retain(|id, user| user.id >= 0);
+
+    // doesn't work because of borrow after move error, haven't found a working way to do this yet,
+    // strangely it did work on a different system, possibly due to rust version differences.
+    //users_by_id.retain(|_k, &mut v| v.id > 0);
 }
