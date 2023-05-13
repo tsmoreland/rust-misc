@@ -1,15 +1,17 @@
-use crate::examples::{hashmap_example, primitive_examples, string_example, vector_example};
+use crate::examples::{hashmap_simple_example, primitive_examples, string_example, vector_example};
 use crate::linkedlist_examples::list_example;
 use crate::vec_examples::{vec_general_example, vec_init_example, vecdeque_example};
+use crate::hash_map_examples::hashmap_example;
 
 mod examples;
 mod vec_examples;
 mod linkedlist_examples;
+mod hash_map_examples;
 
 fn main() {
     vector_example();
     string_example();
-    hashmap_example();
+    hashmap_simple_example();
     primitive_examples();
 
     println!("--- vec examples ---");
@@ -22,4 +24,7 @@ fn main() {
 
     println!("--- linked list ---");
     list_example();
+
+    println!("--- hashmap example ---");
+    hashmap_example();
 }
