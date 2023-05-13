@@ -67,7 +67,7 @@ pub fn vec_general_example() {
 pub fn vecdeque_example() {
     let mut new_deque:VecDeque<u32> = VecDeque::new();
     let mut cap_deque:VecDeque<u32> = VecDeque::with_capacity(5);
-    let mut from_deque = VecDeque::from([0, 1, 2]);
+    let from_deque = VecDeque::from([0, 1, 2]);
 
     new_deque.push_front(2);
     new_deque.push_front(1);
@@ -75,24 +75,21 @@ pub fn vecdeque_example() {
     cap_deque.push_back(0);
     cap_deque.push_back(1);
     cap_deque.push_back(2);
-    println!("new: {:?} cap: {:?} from: {:?}", new_deque, cap_deque, from_deque)
+    println!("new: {:?} cap: {:?} from: {:?}", new_deque, cap_deque, from_deque);
 
     new_deque.pop_front();
     cap_deque.pop_back();
-    println!("new: {:?} cap: {:?} from: {:?}", new_deque, cap_deque, from_deque)
+    println!("new: {:?} cap: {:?} from: {:?}", new_deque, cap_deque, from_deque);
 
-    if new_deque.contains(1) {
+    let one = 1;
+    if new_deque.contains(&one) {
         println!("new contains 1");
     }
 
     let new_front = new_deque.front();
-    let new_mut_front = new_deque.front_mut();
+    //let new_mut_front = new_deque.front_mut();
     match new_front {
         Some(x) => println!("new_front = {x}"),
-        None => {},
-    }
-    match new_mut_front {
-        Some(&mut x) => println!("new_mut_front = {x}"),
         None => {},
     }
 
