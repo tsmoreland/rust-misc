@@ -23,7 +23,6 @@ pub fn vector_example() {
     println!("event numbers: {:?}", even_numbers)
 }
 
-
 pub fn string_example() {
     let hello_world:String = String::from("Hello World");
     println!("string: {}", hello_world);
