@@ -1,9 +1,9 @@
-use crate::examples::{hashmap_example, primitive_examples, string_example, vector_mut_example};
+use crate::examples::{hashmap_example, primitive_examples, string_example, vector_example};
 
 mod examples;
 
 fn main() {
-    vector_mut_example();
+    vector_example();
     string_example();
     hashmap_example();
     primitive_examples();
