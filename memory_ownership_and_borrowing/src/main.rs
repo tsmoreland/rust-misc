@@ -5,7 +5,7 @@ fn main() {
     primitive_data_types()
 }
 
-// privitive_data_types lists the various primitives and via comments what the implicit types are, overly simple reference material
+// primitive_data_types lists the various primitives and via comments what the implicit types are, overly simple reference material
 fn primitive_data_types() {
 
     // scalar integers: i8, i16, i32, i64, i128 and u8 ... u128 where u is unsigned integer and i is integer
