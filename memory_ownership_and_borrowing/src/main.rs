@@ -2,7 +2,8 @@ fn main() {
     let message = "Hello, world!".to_string();
     println!("{}", message);
 
-    primitive_data_types()
+    primitive_data_types();
+    non_copyable_example();
 }
 
 // primitive_data_types lists the various primitives and via comments what the implicit types are, overly simple reference material
@@ -29,6 +30,15 @@ fn primitive_data_types() {
     // array of i32 with 5 items (static size, can't grow)
     let array:[i32; 5]  = [1, 2, 3, 4, 5];
     println!("{:?} {:?}, tuple access: {:?}", t, array, t.0);
+}
 
+fn non_copyable_example() {
+    let x = String::from("Owned Value");
+    let y = x;
 
+    // println!("{}", x); - not allowed because owernship was transfer to y
+    // println!("{}", y.clone();  or set y = x.clone() - possible fix but means duplicating memory
+    println!("{}", &y); // better fix, borrow the value of y, it'll be returned when println! returns
+    println!("{}", y);
+    
 }
