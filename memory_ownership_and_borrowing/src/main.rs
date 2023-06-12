@@ -5,6 +5,9 @@ fn main() {
     primitive_data_types();
     non_copyable_example();
     copy_clone_traits_example();
+
+    immutable_borrowing();
+    mutable_borrowing();
 }
 
 // primitive_data_types lists the various primitives and via comments what the implicit types are, overly simple reference material
@@ -81,4 +84,44 @@ fn copy_clone_traits_example() {
 
     println!("{:?}", b1); 
     println!("{:?}", b2);
+}
+
+fn print_length(s: &String) {
+    println!("{}, length = {}", s, s.len());
+}
+
+fn print_length_using_slice(s: &str) {
+    println!("{}, length = {}", s, s.len());
+}
+
+fn immutable_borrowing() {
+    let x = String::from("Hello, World!");
+    let y: &String = &x;
+    let z: &String = &x; // can have more than one immutable ref
+    let w = &x[0..5];
+
+    println!("{}", x);
+    println!("{}", y);
+    println!("{}", *y); // same as just y, it's not needed but is allowed
+    print_length(z);
+    print_length_using_slice(y);
+    print_length_using_slice(w);
+}
+
+fn append(source: &mut String, value: &String) {
+    source.push_str(value);
+}
+
+fn mutable_borrowing() {
+    let mut x = "Hello ".to_string();
+    let y = &mut x;
+    let z = "World".to_string();
+    append(y, &z);
+
+    println!("{}", x);
+
+    let mut a = 42;
+    let b = &mut a;
+    *b += 1; // need to dereference scalar / primivite type
+    println!("{}", a);
 }
