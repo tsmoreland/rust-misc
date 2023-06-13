@@ -10,6 +10,7 @@ fn main() {
     mutable_borrowing();
 
     lifetimes_in_fn_example();
+    lifetimes_in_structs();
 }
 
 // here we add Copy/Clone traits without which the below b2 = b1 would move b1, now it's copying; 
@@ -33,6 +34,13 @@ impl Clone for Book {
             title: self.title.clone(),
         }
     }
+}
+
+struct BookWithAuthor<'a> {
+    id: u32,
+    publish_year: u32,
+    title: String,
+    author: &'a str,
 }
 
 
@@ -156,5 +164,21 @@ fn get_oldest<'a>(b1: &'a Book, b2: &'a Book) -> &'a Book {
     } else {
         b2
     }
+}
+
+fn lifetimes_in_structs() {
+    let authors = [ "Michael Crichton".to_string(), "Tom Clancy".to_string(), "Lee Child".to_string() ];
+
+    let b1 = BookWithAuthor { id: 1, publish_year: 1990, title: "Jurassic Park".to_string(), author: &authors[0] }; 
+    let b2 = BookWithAuthor { id: 2, publish_year: 1997, title: "Killing Floor".to_string(), author: &authors[2] }; 
+
+    {
+        let other_authors = [ "Lee Child".to_string() ];
+        //b2.author = &other_authors[0]; // not allowed because life time of other_authors is shorter than b2, assuming b2 was mutable as well which it isn't any more
+        _ = other_authors;
+    }
+
+    println!("{}: {} by {} published {}", b1.id, &b1.title, &b1.author, b1.publish_year);
+    println!("{}: {} by {} published {}", b2.id, &b2.title, &b2.author, b2.publish_year);
 }
 
